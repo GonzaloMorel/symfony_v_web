@@ -1,0 +1,129 @@
+{# app/Resources/view/verant/footer.html.twig #}
+
+
+{% block footer %}
+    <footer id="footer">
+        <div class="container">
+
+            <div class="row">
+                <!-- col #1 -->
+                <div class="col-md-3 col-sm-3">
+
+                    <!-- Footer Logo -->
+                    <img class="footer-logo" src="{{ asset('public/assets/logo2.png') }}" alt=""/>
+
+                    <!-- Small Description -->
+                    {# verant.0.descripcion|raw #}
+                    <!--<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>-->
+
+                    <!-- Contact Address -->
+                    <address>
+                        <ul class="list-unstyled">
+                            <li class="footer-sprite address">
+                                {{ verant.0.direccion~ ' '~verant.0.numero }}<br>
+                                {# verant.0.comuna #}
+                            </li>
+                            <li class="footer-sprite phone">
+                                {% if verant.0.telefono1 %}
+                                    {{ 'Telefono: '~ verant.0.codigoPais ~ verant.0.telefono1 }}
+                                {% endif %}
+
+                            </li>
+                            {% if verant.0.telefono2 %}
+                                <li class="footer-sprite phone">
+                                    {{ 'Telefono: ' ~ verant.0.codigoPais ~  verant.0.telefono2 }}
+                                </li>
+                            {% endif %}
+                            <li class="footer-sprite email">
+                                {% if verant.0.email %}
+                                    <a href="mailto:{{ verant.0.email }}">{{ verant.0.email }}
+                                {% endif %}
+                            </li>
+                        </ul>
+                    </address>
+                    <!-- /Contact Address -->
+
+                </div>
+                <!-- /col #1 -->
+
+                <!-- col #2 -->
+                <div class="col-md-3 col-sm-3 col-md-offset-6 col-sm-offset-6">
+                    <div class="clearfix">
+                        <img id="corfoFooter" src="{{ asset('public/assets/corfo.jpg') }}"/><!-- imagen corfo -->
+                    </div>
+
+                    <!-- Social Icons -->
+                    <div class="clearfix">
+                        {% if verant.0.facebook %}
+                            <a href="{{ verant.0.facebook }}" class="social-icon social-icon-sm social-icon-border social-facebook pull-left" data-toggle="tooltip" data-placement="top" title="Facebook">
+                                <i class="icon-facebook"></i>
+                                <i class="icon-facebook"></i>
+                            </a>
+                        {% endif %}
+                        {% if verant.0.twiter %}
+                            <a href="{{ verant.0.twiter }}" class="social-icon social-icon-sm social-icon-border social-twitter pull-left" data-toggle="tooltip" data-placement="top" title="Twitter">
+                                <i class="icon-twitter"></i>
+                                <i class="icon-twitter"></i>
+                            </a>
+                        {%endif %}
+                        {% if verant.0.googlePlus %}
+                            <a href="{{ verant.0.googlePlus}}" class="social-icon social-icon-sm social-icon-border social-gplus pull-left" data-toggle="tooltip" data-placement="top" title="Google plus">
+                                <i class="icon-gplus"></i>
+                                <i class="icon-gplus"></i>
+                            </a>
+                        {% endif %}
+                        {% if verant.0.linkedin %}
+                            <a href="{{ verant.0.linkedin }}" class="social-icon social-icon-sm social-icon-border social-linkedin pull-left" data-toggle="tooltip" data-placement="top" title="Linkedin">
+                                <i class="icon-linkedin"></i>
+                                <i class="icon-linkedin"></i>
+                            </a>
+                        {% endif %}
+                        {% if verant.0.rss %}
+                            <a href="{{ verant.0.rss }}" class="social-icon social-icon-sm social-icon-border social-rss pull-left" data-toggle="tooltip" data-placement="top" title="Rss">
+                                <i class="icon-rss"></i>
+                                <i class="icon-rss"></i>
+                            </a>
+                        {% endif %}
+                    </div>
+                    <!-- /Social Icons -->
+
+                </div>
+                <!-- /col #2 -->
+
+                <!-- col #3 --><!-- BOTONES PARA WEBPAY -->
+                {#
+                <div class="col-md-4">
+                    <h4 class="letter-spacing-1">Pago Seguro</h4>
+                    <p>Donec tellus massa, tristique sit amet condim vel, facilisis quis sapien. Praesent id enim sit amet.</p>
+                    <p>	<!-- see assets/images/cc/ for more icons --><!--
+                        <img src="{ asset('public/assets/images/cc/Visa.png') }}" alt="" />
+                        <img src="{{ asset('public/assets/images/cc/Mastercard.png') }}" alt="" />
+                        <img src="{{ asset('public/assets/images/cc/Maestro.png') }}" alt="" />
+                        <img src="{{ asset('public/assets/images/cc/PayPal.png') }" alt="" />
+                    </p>
+                </div>
+                    #}
+                <!-- /col #3 --><!-- FIN BOTONES PARA WEBPAY -->
+
+
+            </div><!-- end row -->
+
+        </div><!-- end container -->
+
+        <div class="copyright">
+            <div class="container">
+                <ul class="pull-right nomargin list-inline mobile-block">
+                    <li><a href="#" data-toggle="modal" data-target="#termsModal">Términos y Condiciones</a></li>
+                    <li>&bull;</li>
+                    <li><a href="#">Privacy</a></li>
+
+                </ul>
+
+                &copy; All Rights Reserved, Verant
+
+            </div>
+        </div>
+
+
+    </footer><!-- end footer -->
+{% endblock %}

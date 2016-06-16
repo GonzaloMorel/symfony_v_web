@@ -1,0 +1,36 @@
+contacto_index:
+    path:     /
+    defaults: { _controller: "WebVerantBundle:Contacto:index" }
+    methods:  GET
+
+contacto_show:
+    path:     /show/{id}
+    defaults: { _controller: "WebVerantBundle:Contacto:show" }
+    methods:  GET
+
+contacto_new:
+    path:     /new
+    defaults: { _controller: "WebVerantBundle:Contacto:new" }
+    methods:  [GET, POST]
+
+contacto_edit:
+    path:     /edit/{id}
+    defaults: { _controller: "WebVerantBundle:Contacto:edit" }
+    methods:  [GET, POST]
+
+contacto_delete:
+    path:     /delete/{id}
+    defaults: { _controller: "WebVerantBundle:Contacto:delete" }
+    methods:  DELETE
+
+
+contacto_contact:
+    path:     /contact
+    defaults: { _controller: "WebVerantBundle:Contacto:reciboContacto" }
+    methods:  [GET, POST]
+    
+    
+#contacto_email:
+#    path:     /email/{nombre}/{email}/{tel}/{asunto}/{mensaje}/{archivo}
+#    defaults: { _controller: "WebVerantBundle:Contacto:sendMail" }
+#    methods:  [GET, POST]

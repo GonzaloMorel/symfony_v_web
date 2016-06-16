@@ -1,0 +1,65 @@
+{% extends 'admin.html.twig' %}
+
+{% block middle %}
+    <header id="page-header">
+        <h1>Listado de Contenido</h1>
+    </header>
+    {% for flashMessege in app.session.flashbag.get('mensaje') %}
+        <div class="alert alert-success" role="alert">
+            <div class="container">{{ flashMessage }}</div>
+        </div>
+    {% endfor %}
+    <div id="content" class="padding-20">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>Contenido <span class="badge badge-info">{{ pagination.getTotalItemCount }}</span></strong>
+            </div>
+            <div class="panel-body">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>{{ knp_pagination_sortable(pagination, 'Id', 'c.id' ) }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Título', 'c.titulo' ) }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Subtítulo', 'c.subtitulo' ) }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Despliegue', 'c.despliegue' ) }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Posición', 'c.posicion' ) }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Activo', 'c.is_active' ) }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Creación', 'c.created_at' ) }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Actualizado', 'c.updated_at' ) }}</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for contenido in pagination %}
+                            <tr>
+                                <td><a href="{{ path('contenido_show', { 'id': contenido.id }) }}">{{ contenido.id }}</a></td>
+                                <td>{{ contenido.titulo }}</td>
+                                <td>{{ contenido.subtitulo }}</td>
+                                <td>{{ contenido.despliegue }}</td>
+                                <td>{{ contenido.posicion }}</td>
+                                <td>{% if contenido.isActive %}Yes{% else %}No{% endif %}</td>
+                                <td>{% if contenido.createdAt %}{{ contenido.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                <td>{% if contenido.updatedAt %}{{ contenido.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <a class="btn btn-sm btn-info" href="{{ path('contenido_show', { 'id': contenido.id }) }}">Ver</a>
+                                        <a class="btn btn-sm btn-success" href="{{ path('contenido_edit', { 'id': contenido.id }) }}">Editar</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {# display navigation #}
+                <div class="navigation">
+                    {{ knp_pagination_render(pagination) }}
+                </div>
+            </div>  
+            <div class="panel-footer">
+                <div class="btn-group" role="group">
+                    <a class="btn btn-md btn-primary" href="{{ path('contenido_new') }}">Crear Contenido</a>
+                </div>
+            </div>
+        </div><!-- end panel-default -->
+    </div><!-- end content -->
+{% endblock %}

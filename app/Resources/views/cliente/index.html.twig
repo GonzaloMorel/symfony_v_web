@@ -1,0 +1,55 @@
+{% extends 'admin.html.twig' %}
+
+{% block middle %}
+
+    <header id="page-header">
+        <h1>Listado de Clientes</h1>
+    </header>
+    <div id="content" class="padding-20">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <Strong>Clientes <span class="badge badge-info">{{ pagination.getTotalItemCount }}</span></strong>
+            </div>
+            <div class="panel-body">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>{{ knp_pagination_sortable(pagination, 'Id', 'c.id' ) }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Nombre Empresa', 'c.titulo' ) }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Imagen', 'c.imagen' ) }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Activo', 'c.is_active' ) }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Creación', 'c.created_at' ) }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Actualización', 'c.updated_at' ) }}</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for contenido in pagination %}
+                            <tr>
+                                <td><a href="{{ path('cliente_show', { 'id': contenido.id }) }}">{{ contenido.id }}</a></td>
+                                <td>{{ contenido.titulo }}</td>
+                                <td><img src="{{ 'data:' ~ contenido.imagenTipo ~ ';base64,' ~ contenido.imagen }}" height="50"/></td>
+                                <td>{% if contenido.isActive %}Yes{% else %}No{% endif %}</td>
+                                <td>{% if contenido.createdAt %}{{ contenido.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                <td>{% if contenido.updatedAt %}{{ contenido.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <a class="btn btn-sm btn-info" href="{{ path('cliente_show', { 'id': contenido.id }) }}">Ver</a>
+                                        <a class="btn btn-sm btn-success" href="{{ path('cliente_edit', { 'id': contenido.id }) }}">Editar</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {# display navigation #}
+                <div class="navigation">
+                    {{ knp_pagination_render(pagination) }}
+                </div>
+            </div>
+            <div class="panel-footer">
+                <a class="btn btn-md btn-primary" href="{{ path('cliente_new') }}">Crear Cliente</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

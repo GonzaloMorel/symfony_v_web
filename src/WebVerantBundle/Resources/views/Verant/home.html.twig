@@ -1,0 +1,73 @@
+{# app/Resources/view/verant/home.html.twig #}
+{% extends 'verant.html.twig' %}
+
+{% block wrapper %}
+    <!-- header -->
+    {{ include('verant/header.html.twig') }}
+    <!-- end header -->
+
+    <!-- HOME -->
+{% for primero in primario %}
+    <section id="slider" class="fullheight" style="background:url({{ 'data:' ~ primero.imagenTipo ~ ';base64,' ~ primero.imagen }})">
+        <div class="overlay dark-5"><!-- dark overlay [1 to 9 opacity] --></div>
+
+        <div class="display-table">
+            <div class="display-table-cell vertical-align-middle">
+
+                <div class="container text-center">
+
+                    <h1 class="nomargin size-50 weight-300 wow fadeInUp" data-wow-delay="0.4s">{{ primero.titulo }}</h1>
+                    <p class="lead wow fadeInUp" data-wow-delay="0.7s">{{ primero.subtitulo }}</p>
+
+                    <div class="margin-top-30 wow fadeInUp" data-wow-delay="1s">
+                        <a href="login" class="btn btn-primary btn-lg col-lg-3 col-md-3 col-sm-3">Regístrate</a>
+                        <div class="clearfix"></div>
+                        <p>- o - <a href="contact">Envíanos tu pregunta</a></p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+{% endfor %}
+    <!-- /HOME -->
+
+    <!--section Smarty-->
+    {% for segundo in secundario %}
+        <section>
+            <div class="container">
+
+                <div class="row">
+                   <div class="col-md-6 col-sm-6">
+
+                       <header>
+                           <h2 class="txtUp colorUno">{{ segundo.titulo }}</h2>
+                           <h3 class="lead colorDos">{{ segundo.subtitulo }}</h3>
+                       </header>
+
+                       {{ segundo.texto|raw }}
+
+                       <a class="btn btn-success btn-lg lightbox col-lg-4 col-md-4" href="{{ segundo.urlVideo }}" data-plugin-options='{"type":"iframe"}'>Ver Video</a>
+
+                   </div>
+
+                    <div class="col-md-6 col-sm-6">
+                        <!--a class="image-hover lightbox thumbnail" href="http://vimeo.com/56624256" data-plugin-options='{"type":"iframe"}'>
+                            <span class="image-hover-icon image-hover-light">
+                                <i class="fa fa-vimeo-square">/i>
+                            </span>
+                            <img class="img-responsive" src="{# asset('public/assets/images/demo/tr.jpg') #}" alt="...">
+                        </a-->
+                        <img class="img-responsive" src="{{ 'data:' ~ segundo.imagenTipo ~ ';base64,' ~ segundo.imagen }}" alt="...">
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+    {% endfor %}
+    <!-- end section Smarty-->
+
+
+{% endblock %}

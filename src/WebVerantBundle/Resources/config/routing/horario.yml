@@ -1,0 +1,24 @@
+horario_index:
+    path:     /
+    defaults: { _controller: "WebVerantBundle:Horario:index" }
+    methods:  GET
+
+horario_show:
+    path:     /show/{id}
+    defaults: { _controller: "WebVerantBundle:Horario:show" }
+    methods:  GET
+
+horario_new:
+    path:     /new
+    defaults: { _controller: "WebVerantBundle:Horario:new" }
+    methods:  [GET, POST]
+
+horario_edit:
+    path:     /edit/{id}
+    defaults: { _controller: "WebVerantBundle:Horario:edit" }
+    methods:  [GET, POST]
+
+horario_delete:
+    path:     /delete/{id}
+    defaults: { _controller: "WebVerantBundle:Horario:delete" }
+    methods:  DELETE

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="{{ _charset }}" />
+        <meta name="robots" content="noindex,nofollow" />
+        <title>{% block title %}{% endblock %}</title>
+
+        {{ include('verant/css.html.twig') }}
+    {% block head %}{% endblock %}
+</head>
+<body class="smoothscroll enable-animation">
+    <div id="content">
+        
+        <div id="wrapper">
+            {% block body %}{% endblock %}
+        </div>
+        
+    <!-- Javascritp -->
+    {{ include('verant/js.html.twig') }} 
+    <!-- end javascript -->
+</div>
+
+
+</body>
+</html>

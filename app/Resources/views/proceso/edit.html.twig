@@ -1,0 +1,31 @@
+{% extends 'admin.html.twig' %}
+
+{% block middle %}
+    <header id="page-header">
+        <h1>Proceso</h1>
+    </header>
+    <div id="content" class="padding-20">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>Edición de Proceso</strong>
+            </div>
+            <div class="panel-body">
+                {{ form_start(edit_form) }}
+                {{ form_widget(edit_form) }}
+                <input class="btn btn-sm btn-success" type="submit" value="Edit" />
+                {{ form_end(edit_form) }}
+
+            </div><!-- end panel-body -->
+            <div class="panel-footer">
+                <div class="btn-group" role="group">
+                    {{ form_start(delete_form) }}
+                    <a class="btn btn-sm btn-warning" href="{{ path('proceso_index') }}">Volver</a>
+                    <a class="btn btn-sm btn-primary" href="{{ path('proceso_new') }}">Crear Proceso</a>
+                    <input class="btn btn-sm btn-danger" class="btn btn-sm btn-danger" type="submit" value="Eliminar">
+                    {{ form_end(delete_form) }}
+                </div>
+            </div><!-- end panel-footer -->
+
+        </div><!-- end panel -->
+    </div><!-- end content -->
+{% endblock %}

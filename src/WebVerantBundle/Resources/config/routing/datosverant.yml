@@ -1,0 +1,24 @@
+datosverant_index:
+    path:     /
+    defaults: { _controller: "WebVerantBundle:DatosVerant:index" }
+    methods:  GET
+
+datosverant_show:
+    path:     /show/{id}
+    defaults: { _controller: "WebVerantBundle:DatosVerant:show" }
+    methods:  GET
+
+datosverant_new:
+    path:     /new
+    defaults: { _controller: "WebVerantBundle:DatosVerant:new" }
+    methods:  [GET, POST]
+
+datosverant_edit:
+    path:     /edit/{id}
+    defaults: { _controller: "WebVerantBundle:DatosVerant:edit" }
+    methods:  [GET, POST]
+
+datosverant_delete:
+    path:     /dlete/{id}
+    defaults: { _controller: "WebVerantBundle:DatosVerant:delete" }
+    methods:  DELETE

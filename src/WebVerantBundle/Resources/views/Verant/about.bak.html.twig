@@ -1,0 +1,208 @@
+{# app/Resources/view/verant/quienesSomos.html.twig #}
+{% extends 'verant.html.twig' %}
+
+{% block wrapper %}
+
+    <!-- header -->
+    {{ include('verant/header2.html.twig') }}
+    <!-- end header -->
+
+    <!--
+   PAGE HEADER
+
+   CLASSES:
+           .page-header-xs	= 20px margins
+           .page-header-md	= 50px margins
+           .page-header-lg	= 80px margins
+           .page-header-xlg= 130px margins
+           .dark			= dark page header
+
+           .shadow-before-1 	= shadow 1 header top
+           .shadow-after-1 	= shadow 1 header bottom
+           .shadow-before-2 	= shadow 2 header top
+           .shadow-after-2 	= shadow 2 header bottom
+           .shadow-before-3 	= shadow 3 header top
+           .shadow-after-3 	= shadow 3 header bottom
+           .light			= light page header
+    -->
+    <section class="page-header dark">
+        <div class="container">
+            <h1>Quienes Somos</h1>
+        </div>
+    </section>
+    <!-- /PAGE HEADER -->
+
+    <!-- -->
+    <section>
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-lg-6 col-md-6 col-sm-6">
+
+                    <!-- OWL SLIDER -->
+                    <div class="owl-carousel buttons-autohide controlls-over nomargin box-shadow-1" data-plugin-options='{"items": 1, "autoHeight": true, "navigation": true, "pagination": true, "transitionStyle":"fade", "progressBar":"true"}'>
+                        {% for foto in about_sec %}
+                            <div>
+                                <img class="img-responsive" src="{{ 'data:'~foto.imagenTipo~';base64,'~foto.imagen }}" alt="{{ foto.titulo }}">
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                    <!-- /OWL SLIDER -->
+
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    {% for about in about_pri %}
+                    <div class="heading-title">
+                        <h2 class="txtUp colorUno">{{ about.titulo }}</h2>
+                    </div>
+
+                    {{ about.texto|raw }}
+                    {% endfor %}
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <!-- / -->
+
+    <!-- PARALLAX -->
+    <section class="parallax parallax-2" style="background-color:#307F82;">
+        <div class="overlay dark-5"><!-- dark overlay [1 to 9 opacity] --></div>
+
+        <div class="container">
+
+            <div class="row">
+
+                {% for usuario in usuarios %}
+                <!-- item -->
+                <div class="col-md-3 col-sm-6">
+
+                    <div class=" box-color box-icon box-icon-center box-icon-round box-icon-large text-center">
+                        <div class="front">
+                            <div class="box1 box-default">
+                                <span class="box-icon-title">
+                                    <img class="img-responsive" src="{{ 'data:' ~ usuario.imagenUsuTipo ~ ';base64,' ~ usuario.imagenUsu }}" alt="" />
+                                    <h2>{{ usuario.nombres ~ ' ' ~ usuario.apPat ~ ' ' ~ usuario.apMat}}</h2>
+                                    <small>{{ usuario.cargo }}</small>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="back">
+                            <div class="box2 box-default">
+                                <h4 class="nomargin">{{ usuario.nombres ~ ' ' ~ usuario.apPat ~ ' ' ~ usuario.apMat}}</h4>
+                                <small>{{ usuario.cargo }}</small>
+
+                                <hr />
+
+                                {{ usuario.texto|raw }}
+
+                                <hr />
+                                {% if usuario.facebook %}
+                                <a href="{{ usuario.facebook }}" class="social-icon social-icon-sm social-facebook">
+                                    <i class="fa fa-facebook"></i>
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                                {% endif %}
+                                {% if usuario.twitter %}
+                                <a href="{{ usuario.twitter }}" class="social-icon social-icon-sm social-twitter">
+                                    <i class="fa fa-twitter"></i>
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                                {% endif %}
+                                {% if usuario.linkedin %}
+                                <a href="{{ usuario.linkedin }}" class="social-icon social-icon-sm social-linkedin">
+                                    <i class="fa fa-linkedin"></i>
+                                    <i class="fa fa-linkedin"></i>
+                                </a>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+
+                        <div class="box1 box-default">
+                            <span class="box-icon-title">
+                                <img class="img-responsive" src="{{ 'data:' ~ usuario.imagenUsuTipo ~ ';base64,' ~ usuario.imagenUsu }}" alt="" />
+                                <h2>{{ usuario.nombres ~ ' ' ~ usuario.apPat ~ ' ' ~ usuario.apMat}}</h2>
+                                <small>{{ usuario.cargo }}</small>
+                            </span>
+                        </div>
+                        <div class="box2 box-default">
+                           <h4 class="nomargin">{{ usuario.nombres ~ ' ' ~ usuario.apPat ~ ' ' ~ usuario.apMat}}</h4>
+                           <small>{{ usuario.cargo }}</small>
+
+                           <hr />
+
+                           {{ usuario.texto|raw }}
+
+                           <hr />
+                           {% if usuario.facebook %}
+                           <a href="{{ usuario.facebook }}" class="social-icon social-icon-sm social-facebook">
+                                <i class="fa fa-facebook"></i>
+                                <i class="fa fa-facebook"></i>
+                           </a>
+                           {% endif %}
+                           {% if usuario.twitter %}
+                           <a href="{{ usuario.twitter }}" class="social-icon social-icon-sm social-twitter">
+                                <i class="fa fa-twitter"></i>
+                                <i class="fa fa-twitter"></i>
+                           </a>
+                           {% endif %}
+                           {% if usuario.linkedin %}
+                           <a href="{{ usuario.linkedin }}" class="social-icon social-icon-sm social-linkedin">
+                                <i class="fa fa-linkedin"></i>
+                                <i class="fa fa-linkedin"></i>
+                           </a>
+                           {% endif %}
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- /item -->
+                {% endfor %}
+            </div>
+
+        </div>
+
+    </section>
+    <!-- /PARALLAX -->
+    <hr />
+    <!-- Brands -->
+    <section class="padding-xs">
+        <div class="container">
+            <header class="text-center margin-bottom-60">
+                <h3 class="lead colorDos">Clientes Felices</h3>
+            </header>
+            <!--
+                    controlls-over		= navigation buttons over the image
+                    buttons-autohide 	= navigation buttons visible on mouse hover only
+
+                    data-plugin-options:
+                            "singleItem": true
+                            "autoPlay": true (or ms. eg: 4000)
+                            "navigation": true
+                            "pagination": true
+            -->
+            <div class="text-center margin-top-30 margin-bottom-30">
+                <div class="owl-carousel nomargin" data-plugin-options='{"singleItem": false, "autoPlay": true}'>
+                    {% for cliente in clientes %}
+                        <div>
+                            <img class="img-responsive" src="{{ 'data:' ~ cliente.imagenTipo ~ ';base64,' ~ cliente.imagen }}" alt="">
+                        </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- /Brands -->
+
+{% endblock %}

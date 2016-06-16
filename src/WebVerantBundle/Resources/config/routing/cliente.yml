@@ -1,0 +1,27 @@
+cliente_index:
+    path:     /
+    defaults: { _controller: "WebVerantBundle:Cliente:index" }
+    methods:  GET
+
+cliente_show:
+    path:     /show/{id}
+    defaults: { _controller: "WebVerantBundle:Cliente:show" }
+    methods:  GET
+
+cliente_new:
+    path:     /new
+    defaults: { _controller: "WebVerantBundle:Cliente:new" }
+    methods:  [GET, POST]
+
+cliente_edit:
+    path:     /edit/{id}
+    defaults: { _controller: "WebVerantBundle:Cliente:edit" }
+    methods:  [GET, POST]
+
+cliente_delete:
+    path:     /delete/{id}
+    defaults: { _controller: "WebVerantBundle:Cliente:delete" }
+    methods:  DELETE
+
+  
+  

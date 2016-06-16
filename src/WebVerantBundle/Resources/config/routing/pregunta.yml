@@ -1,0 +1,24 @@
+pregunta_index:
+    path:     /
+    defaults: { _controller: "WebVerantBundle:Pregunta:index" }
+    methods:  GET
+
+pregunta_show:
+    path:     /show/{id}
+    defaults: { _controller: "WebVerantBundle:Pregunta:show" }
+    methods:  GET
+
+pregunta_new:
+    path:     /new
+    defaults: { _controller: "WebVerantBundle:Pregunta:new" }
+    methods:  [GET, POST]
+
+pregunta_edit:
+    path:     /edit/{id}
+    defaults: { _controller: "WebVerantBundle:Pregunta:edit" }
+    methods:  [GET, POST]
+
+pregunta_delete:
+    path:     /delete/{id}
+    defaults: { _controller: "WebVerantBundle:Pregunta:delete" }
+    methods:  DELETE

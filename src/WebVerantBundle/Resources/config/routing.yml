@@ -1,0 +1,70 @@
+web_verant_contacto:
+    resource: "@WebVerantBundle/Resources/config/routing/contacto.yml"
+    prefix:   /contacto
+    
+web_verant_contenido:
+    resource: "@WebVerantBundle/Resources/config/routing/contenido.yml"
+    prefix:   /contenido
+    
+web_verant_servicio:
+    resource: "@WebVerantBundle/Resources/config/routing/servicio.yml"
+    prefix:   /servicio
+    
+web_verant_proceso:
+    resource: "@WebVerantBundle/Resources/config/routing/proceso.yml"
+    prefix:   /proceso
+    
+web_verant_cliente:
+    resource: "@WebVerantBundle/Resources/config/routing/cliente.yml"
+    prefix:   /cliente
+
+web_verant_faq_admin:
+    resource: "@WebVerantBundle/Resources/config/routing/faq.yml"
+    prefix:   /faq_admin
+
+web_verant_horario:
+    resource: "@WebVerantBundle/Resources/config/routing/horario.yml"
+    prefix:   /horario
+    
+web_verant_datos:
+    resource: "@WebVerantBundle/Resources/config/routing/datosverant.yml"
+    prefix:   /datos_verant
+
+web_verant_pregunta:
+    resource: "@WebVerantBundle/Resources/config/routing/pregunta.yml"
+    prefix:   /pregunta
+
+web_verant_homepage:
+    path:     /
+    defaults: { _controller: WebVerantBundle:Default:index }
+
+web_verant_service:
+    path:     /service
+    defaults: { _controller: WebVerantBundle:Default:service }
+
+
+web_verant_about:
+    path:     /about
+    defaults: { _controller: WebVerantBundle:Default:about }
+    
+web_verant_faq:
+    path:     /faq
+    defaults: { _controller: WebVerantBundle:Default:faq }
+    
+web_verant_contact:
+    path:     /contact
+    defaults: { _controller: WebVerantBundle:Default:contact }
+    
+web_verant_login:
+    path:     /login
+    defaults: { _controller: WebVerantBundle:Default:login }
+    
+web_verant_login_access:
+    path:     /access
+    defaults: { _controller: WebVerantBundle:Default:loginAccess }
+    methods:  [GET, POST]
+    
+web_verant_logout:
+    path:     /logout
+    defaults: { _controller: WebVerantBundle:Default:logout }
+    methods:  [GET, POST]

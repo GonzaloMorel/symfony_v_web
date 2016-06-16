@@ -1,0 +1,35 @@
+usuario_index:
+    path:     /
+    defaults: { _controller: "VerantBundle:Usuario:index" }
+    methods:  GET
+
+usuario_show:
+    path:     /show/{id}
+    defaults: { _controller: "VerantBundle:Usuario:show" }
+    methods:  GET
+
+usuario_new:
+    path:     /new
+    defaults: { _controller: "VerantBundle:Usuario:new" }
+    methods:  [GET, POST]
+
+usuario_edit:
+    path:     /edit/{id}
+    defaults: { _controller: "VerantBundle:Usuario:edit" }
+    methods:  [GET, POST]
+
+usuario_delete:
+    path:     /delete/{id}
+    defaults: { _controller: "VerantBundle:Usuario:delete" }
+    methods:  DELETE
+
+
+usuario_loggin:
+    path:     /login
+    defaults: { _controller: "VerantBundle:Usuario:login" }
+    methods:  [GET, POST]
+    
+usuario_registro:
+    path:     /registro
+    defaults: { _controller: "VerantBundle:Usuario:registro" }
+    methods:  [GET, POST]

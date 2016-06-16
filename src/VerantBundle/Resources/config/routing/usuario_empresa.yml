@@ -1,0 +1,34 @@
+usuario_empresa_index:
+    path:     /
+    defaults: { _controller: "VerantBundle:UsuarioEmpresa:index" }
+    methods:  GET
+
+usuario_empresa_show:
+    path:     /show/{id}
+    defaults: { _controller: "VerantBundle:UsuarioEmpresa:show" }
+    methods:  GET
+
+usuario_empresa_new:
+    path:     /new
+    defaults: { _controller: "VerantBundle:UsuarioEmpresa:new" }
+    methods:  [GET, POST]
+
+usuario_empresa_edit:
+    path:     /edit/{id}
+    defaults: { _controller: "VerantBundle:UsuarioEmpresa:edit" }
+    methods:  [GET, POST]
+
+usuario_empresa_delete:
+    path:     /delete/{id}
+    defaults: { _controller: "VerantBundle:UsuarioEmpresa:delete" }
+    methods:  DELETE
+
+usuario_empresa_loggin:
+    path:     /login
+    defaults: { _controller: "VerantBundle:UsuarioEmpresa:login" }
+    methods:  [GET, POST]
+    
+usuario_empresa_registro:
+    path:     /registro
+    defaults: { _controller: "VerantBundle:UsuarioEmpresa:registro" }
+    methods:  [GET, POST]

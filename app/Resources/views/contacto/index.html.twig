@@ -1,0 +1,73 @@
+{% extends 'admin.html.twig' %}
+
+{% block middle %}
+    <header id="page-header">
+        <h1>Contactos</h1>
+    </header>
+    {% for flashMessege in app.session.flashbag.get('mensaje') %}
+        <div class="alert alert-success" role="alert">
+            <div class="container">{{ flashMessage }}</div>
+        </div>
+    {% endfor %}
+    <div id="content" class="padding-20">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>Contactos Externo<span class="badge badge-info">{{ pagination.getTotalItemCount }}</span></strong>
+            </div>
+            <div class="panel-body">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>{{ knp_pagination_sortable(pagination, 'Id', 'c.id' ) }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Nombre', 'c.nombre' ) }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Email', 'c.email' ) }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Telefono', 'c.telefono' ) }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Asunto', 'c.asunto' ) }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Mensaje', 'c.mensaje' ) }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Creación', 'c.created_at' ) }}</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for contacto in pagination %}
+                            <tr>
+                                <td><a href="{{ path('contacto_show', { 'id': contacto.id }) }}">{{ contacto.id }}</a></td>
+                                <td>{{ contacto.nombre }}</td>
+                                <td>
+                                    <a href="mailto:{{ contacto.email }}">
+                                        {{ contacto.email }}
+                                    </a>
+                                </td>
+                                <td>{{ contacto.telefono }}</td>
+                                <td>
+                                    {% if contacto.archivoTipo %}
+                                        <a href="{{ 'data:'~contacto.archivoTipo~';base64,'~ contacto.archivo}}" target="_blank">
+                                            <span class="fa fa-paperclip"></span>
+                                        </a>
+                                    {% endif %}
+                                    {{ contacto.asunto }}
+
+                                </td>
+                                <td>{{ contacto.mensaje }}</td>
+                                <td>{% if contacto.createdAt %}{{ contacto.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <a class="btn btn-sm btn-info" href="{{ path('contacto_show', { 'id': contacto.id }) }}">Ver</a>
+                                        {#<a href="{{ path('contacto_edit', { 'id': contacto.id }) }}">edit</a>#}
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {# display navigation #}
+                <div class="navigation">
+                    {{ knp_pagination_render(pagination) }}
+                </div>
+            </div><!-- end panel-body -->
+            <div class="panel-footer">
+            </div><!-- end panel footer -->
+        </div><!-- end panel default -->
+    </div><!-- end content -->
+{% endblock %}

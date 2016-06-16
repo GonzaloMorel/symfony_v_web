@@ -1,0 +1,7 @@
+*~
+.*swp
+logs/*
+app/config/parameters.yml
+.vagrant/*
+app/cache/*
+app/logs/*

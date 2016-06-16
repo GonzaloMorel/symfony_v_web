@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Provincias list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Idprv</th>
+                <th>Codigoprv</th>
+                <th>Nombreprv</th>
+                <th>Ordenprv</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for provincia in provincias %}
+            <tr>
+                <td><a href="{{ path('provincias_show', { 'id': provincia.idPrv }) }}">{{ provincia.idPrv }}</a></td>
+                <td>{{ provincia.codigoPrv }}</td>
+                <td>{{ provincia.nombrePrv }}</td>
+                <td>{{ provincia.ordenPrv }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('provincias_show', { 'id': provincia.idPrv }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('provincias_edit', { 'id': provincia.idPrv }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('provincias_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,14 @@
+{# app/Resources/views/Emails/contacto.html.twig #}
+<h3>Contacto de Cliente</h3>
+
+{# example, assuming you have a route named "login" #}
+{{ 'Nombre:'~nombre }}
+<br/>
+{{ 'Telefono:'~tel }}
+<br>
+{{ mensaje}}
+
+<br/>
+
+{# Makes an absolute URL to the /images/logo.png file #}
+<img src="{{ absolute_url(asset('public/assets/logo2.png')) }}">

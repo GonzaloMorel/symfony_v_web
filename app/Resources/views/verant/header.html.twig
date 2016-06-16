@@ -1,0 +1,49 @@
+{# app/Resources/view/verant/header.html.twig #}
+
+
+{% block top_bar %}
+
+    <div id="header" class="sticky clearfix transparent">
+
+        <!-- TOP NAV -->
+        <header id="topNav">
+            <div class="container">
+
+                <!-- Mobile Menu Button -->
+                <button class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+
+                <!-- Logo -->
+                <a class="logo pull-left" href="/">
+                    <img src="{{ asset('public/assets/logo_colores.png') }}" alt="" />
+                </a>
+
+                <!--
+                        Top Nav
+
+                        AVAILABLE CLASSES:
+                        submenu-dark = dark sub menu
+                -->
+                <div class="navbar-collapse pull-right nav-main-collapse collapse submenu-dark">
+                    <nav class="nav-main">
+
+                        <!--
+                                .nav-onepage
+                                Required for onepage navigation links
+
+                                Add .external for an external link!
+                        -->
+                        <ul id="topMain" class="nav nav-pills nav-main">
+                            {{ include('verant/nav.html.twig') }}
+                        </ul>
+
+                    </nav>
+                </div>
+
+            </div>
+        </header>
+        <!-- /Top Nav -->
+
+    </div>
+{% endblock %}

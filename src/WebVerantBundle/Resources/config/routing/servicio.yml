@@ -1,0 +1,33 @@
+servicio_index:
+    path:     /
+    defaults: { _controller: "WebVerantBundle:Servicio:index" }
+    methods:  GET
+
+servicio_show:
+    path:     /show/{id}
+    defaults: { _controller: "WebVerantBundle:Servicio:show" }
+    methods:  GET
+    
+servicio_new:
+    path:     /new
+    defaults: { _controller: "WebVerantBundle:Servicio:new" }
+    methods:  [GET, POST]
+
+servicio_edit:
+    path:     /edit/{id}
+    defaults: { _controller: "WebVerantBundle:Servicio:edit" }
+    methods:  [GET, POST]
+
+servicio_delete:
+    path:     /delete/{id}
+    defaults: { _controller: "WebVerantBundle:Servicio:delete" }
+    methods:  DELETE
+    
+servicio_create:
+    path:     /delete/{id}
+    defaults: { _controller: "WebVerantBundle:Servicio:delete" }
+    methods:  DELETE
+
+
+
+

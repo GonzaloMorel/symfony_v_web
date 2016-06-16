@@ -1,0 +1,24 @@
+
+verant_usuario_natural:
+    resource: "@VerantBundle/Resources/config/routing/usuario_natural.yml"
+    prefix:   /usuario_natural
+
+verant_usuario_empresa:
+    resource: "@VerantBundle/Resources/config/routing/usuario_empresa.yml"
+    prefix:   /usuario_empresa
+
+verant_usuario:
+    resource: "@VerantBundle/Resources/config/routing/usuario.yml"
+    prefix:   /usuario
+    
+verant_empresa:
+    resource: "@VerantBundle/Resources/config/routing/empresa.yml"
+    prefix:   /empresa
+    
+verant_provincias:
+    resource: "@VerantBundle/Resources/config/routing/provincias.yml"
+    prefix:   /provincias
+    
+verant_homepage:
+    path:     /
+    defaults: { _controller: VerantBundle:Default:index }

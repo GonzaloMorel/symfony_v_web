@@ -1,0 +1,119 @@
+{# app/Resources/view/verant/faq.html.twig #}
+{% extends 'verant.html.twig' %}
+
+{% block wrapper %}
+
+    <!-- header -->
+    {{ include('verant/header2.html.twig') }}
+    <!-- end header -->
+
+    <!--
+    PAGE HEADER
+
+    CLASSES:
+            .page-header-xs	= 20px margins
+            .page-header-md	= 50px margins
+            .page-header-lg	= 80px margins
+            .page-header-xlg= 130px margins
+            .dark			= dark page header
+
+            .shadow-before-1 	= shadow 1 header top
+            .shadow-after-1 	= shadow 1 header bottom
+            .shadow-before-2 	= shadow 2 header top
+            .shadow-after-2 	= shadow 2 header bottom
+            .shadow-before-3 	= shadow 3 header top
+            .shadow-after-3 	= shadow 3 header bottom
+            .light			= light page header
+    -->
+    <section class="page-header dark">
+        <div class="container">
+
+            <h1>Preguntas Frecuentes</h1>
+
+        </div>
+    </section>
+    <!-- /PAGE HEADER -->
+
+    <!-- section faq-->
+    <section>
+        <div class="container">
+
+            <div class="row">
+
+                <!-- LEFT COLUMNS -->
+                <div class="col-md-8 margin-bottom-30">
+
+                    <p class="lead">{{ faq_pri.0.texto }}</p>
+
+                    <!-- TOGGLES -->
+                    <div class="toggle toggle-transparent toggle-bordered-full margin-top-60">
+                        {% for pregunta in preguntas %}
+                        <div class="toggle"><!-- toggle -->
+                            <label>{{ loop.index ~"."~ pregunta.pregunta }}</label>
+                            <div class="toggle-content">
+                                <p>
+                                    {{ pregunta.respuesta|raw }}
+                                </p>
+
+                            </div>
+                        </div><!-- /toggle -->
+                        {% endfor %}
+
+                    </div>
+                    <!-- /TOGGLES -->
+
+                </div>
+                <!-- /LEFT COLUMNS -->
+
+                <!-- RIGHT COLUMNS -->
+                <div class="col-md-4">
+                  <div class="well">
+                    {% for flashMessage in app.session.flashbag.get('mensaje') %}
+                        <div class="alert alert-mini alert-danger margin-bottom-30">
+                            <span class="alert-success">
+                                {{ flashMessage }}
+                                </br>
+                            </span>
+                        </div>
+                    {% endfor %}
+
+                    <!-- ASK A QUSTION -->
+                    <h4 class="lead colorDos"><strong>Envía</strong> una pregunta</h4>
+                    <!--<form action="{# path ('pregunta_new') #}" method="post" class="sky-form clearfix">
+
+                        <label class="input">
+                            <i class="ico-prepend fa fa-user"></i>
+                            <input name="nombre" type="text" placeholder="Nombre">
+                        </label>
+
+                        <label class="input">
+                            <i class="ico-prepend fa fa-envelope"></i>
+                            <input name="email" type="text" placeholder="Email">
+                        </label>
+
+                        <label class="textarea">
+                            <i class="ico-prepend fa fa-comment"></i>
+                            <textarea name="pregunta" rows="3" placeholder="Escribe tu pregunta..."></textarea>
+                        </label>
+
+                        <button class="btn btn-primary btn-sm pull-right">SUBMIT YOUR QUESTION</button>
+
+                    </form>-->
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    <br/>
+                    <div>
+                        <input class="btn btn-primary col-lg-6 col-md-6" type="submit" value="Enviar" />
+                    </div>
+                    {{ form_end(form) }}
+                  </div>
+                </div>
+                <!-- /RIGHT COLUMNS -->
+
+            </div><!-- end row-->
+
+        </div><!-- end container -->
+    </section>
+    <!-- end section faq -->
+
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends 'admin.html.twig' %}
+
+{% block middle %}
+
+    <header id="page-header">
+        <h1>Listado de Procesos</h1>
+    </header>
+    <div id="content" class="padding-20">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <Strong>Procesos <span class="badge badge-info">{{ pagination.getTotalItemCount }}</span></strong>
+            </div>
+            <div class="panel-body">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>{{ knp_pagination_sortable(pagination, 'Id', 'c.id' ) }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Título', 'c.titulo' ) }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Despliegue', 'c.despliegue' ) }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Orden', 'c.orden' ) }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Activo', 'c.is_active' ) }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Creación', 'c.created_at' ) }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Actualización', 'c.updated_at' ) }}</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for contenido in pagination %}
+                            <tr>
+                                <td><a href="{{ path('proceso_show', { 'id': contenido.id }) }}">{{ contenido.id }}</a></td>
+                                <td>{{ contenido.titulo }}</td>
+                                <td>
+                                    {% if(contenido.despliegue == "SERV_EMP") %}
+                                        {{ 'Servicio Empresas' }}
+                                    {% elseif(contenido.despliegue == "SERV_PERS")    %}
+                                        {{ 'Servicio Personas' }}
+                                    {% endif %}
+                                </td>
+                                <td>{{ contenido.orden }}</td>
+                                <td>{% if contenido.isActive %}Yes{% else %}No{% endif %}</td>
+                                <td>{% if contenido.createdAt %}{{ contenido.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                <td>{% if contenido.updatedAt %}{{ contenido.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <a class="btn btn-sm btn-info" href="{{ path('proceso_show', { 'id': contenido.id }) }}">Ver</a>
+                                        <a class="btn btn-sm btn-success" href="{{ path('proceso_edit', { 'id': contenido.id }) }}">Editar</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                    {# display navigation #}
+                    <div class="navigation">
+                        {{ knp_pagination_render(pagination) }}
+                    </div>
+            </div>
+            <div class="panel-footer">
+                <a class="btn btn-md btn-primary" href="{{ path('proceso_new') }}">Crear Proceso</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'admin.html.twig' %}
+
+{% block middle %}
+    <header id="page-header">
+        <h1>Datos Verant</h1>
+    </header>
+    <div id="content" class="padding-20">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>Edición de Datos</strong>
+            </div><!-- end panel-heading -->
+            <div class="panel-body">
+                {{ form_start(edit_form) }}
+                
+                {{ form_widget(edit_form) }}
+                <input class="btn btn-lg btn-success" type="submit" value="Editar" />
+                {{ form_end(edit_form) }}
+            </div><!-- end panel-body-->
+
+            <div class="panel-footer">
+                {#
+                <div class="btn-group" role="group">
+                    {{ form_start(delete_form) }}
+                    {#<a class="btn btn-sm btn-success" href="{{ path('datosverant_index') }}">Back to the list</a>
+                    <input class="btn btn-sm btn-danger" type="submit" value="Delete">
+                    {{ form_end(delete_form) }}
+                </div>
+                #}
+            </div><!-- end panel-footer -->
+        </div><!-- end panel-default -->
+    </div><!-- end content -->
+{% endblock %}

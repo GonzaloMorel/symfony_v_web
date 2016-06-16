@@ -1,0 +1,158 @@
+{# app/Resources/view/verant/faq.html.twig #}
+{% extends 'verant.html.twig' %}
+
+{% block wrapper %}
+
+    <!-- header -->
+    {{ include('verant/header2.html.twig') }}
+    <!-- end header -->
+
+    <!--
+    PAGE HEADER
+
+    CLASSES:
+            .page-header-xs	= 20px margins
+            .page-header-md	= 50px margins
+            .page-header-lg	= 80px margins
+            .page-header-xlg= 130px margins
+            .dark			= dark page header
+
+            .shadow-before-1 	= shadow 1 header top
+            .shadow-after-1 	= shadow 1 header bottom
+            .shadow-before-2 	= shadow 2 header top
+            .shadow-after-2 	= shadow 2 header bottom
+            .shadow-before-3 	= shadow 3 header top
+            .shadow-after-3 	= shadow 3 header bottom
+            .light			= light page header
+    -->
+    <section class="page-header dark">
+        <div class="container">
+
+            <h1>Contacto</h1>
+
+
+        </div>
+    </section>
+    <!-- /PAGE HEADER -->
+
+    <!-- -->
+    <section>
+        <div class="container">
+
+            <div class="row">
+
+                <!-- FORM -->
+                <div class="col-md-8 col-sm-7">
+
+                    <h3 class="txtUp colorUno">Estamos aquí<br>para responder a tus dudas</h3>
+
+
+                    {% for flashMessage in app.session.flashbag.get('mensaje') %}
+                        <div class="alert alert-mini alert-danger margin-bottom-30">
+                            <span class="alert-success">
+                                {{ flashMessage }}
+                                </br>
+                            </span>
+                        </div>
+                    {% endfor %}
+
+
+                    <form action="{{ path('contacto_contact') }}" method="post" enctype="multipart/form-data">
+                        <fieldset>
+                            <input type="hidden" name="action" value="contact_send" />
+
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        <label for="contact:nombre">Nombre Completo *</label>
+                                        <input required type="text" value="" class="form-control" name="contact[nombre][required]"  id="contact:nombre">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="contact:email">E-mail *</label>
+                                        <input required type="email" value="" class="form-control" name="contact[email][required]" id="contact:email">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="contact:telefono">Teléfono *</label>
+                                        <input required type="text" value="" class="form-control" name="contact[telefono]" id="contact:telefono">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <label for="contact:asunto">Asunto *</label>
+                                        <input required type="text" value="" class="form-control" name="contact[asunto][required]" id="contact:asunto">
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <label for="contact:mensaje">Mensaje *</label>
+                                        <textarea required maxlength="10000" rows="8" class="form-control" name="contact[mensaje]" id="contact:mensaje"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <label for="contact:archivo">Archivo Adjunto</label>
+
+                                        <!-- custom file upload -->
+                                        <input class="custom-file-upload" type="file" id="file" name="contact[archivo]" id="contact:archivo" data-btn-text="Seleccionar Archivo" onchange="nombre_ar(this.id);"/>
+                                        <small class="text-muted block">Max file size: 10Mb (jpeg/jpg/png/pdf)</small>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </fieldset>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Enviar Mensaje</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+                <!-- /FORM -->
+
+
+                <!-- INFO -->
+                <div class="col-md-4 col-sm-5">
+                  <div class="well">
+                    {% for contacto in contacto_pri %}
+                        <h2 class="lead colorDos"><strong>{{ contacto.titulo}}</strong></h2>
+
+                        {{ contacto.texto|raw }}
+                    {% endfor %}
+                    <hr />
+
+                    <p>
+                        {% if verant.0.direccion %}<span class="block"><strong><i class="fa fa-map-marker"></i> Direccion:</strong> {{ verant.0.direccion ~" #"~verant.0.numero }}</span>{% endif %}
+                        {% if verant.0.telefono1 %}<span class="block"><strong><i class="fa fa-phone"></i> Teléfono:</strong> <a href="tel:{{ verant.0.codigoPais ~ verant.0.telefono1 }}">{{ verant.0.codigoPais ~ verant.0.telefono1 }}</a></span>{% endif %}
+                        {% if verant.0.telefono2 %}<span class="block"><strong><i class="fa fa-phone"></i> Teléfono:</strong> <a href="tel:{{ verant.0.codigoPais ~ verant.0.telefono2 }}">{{ verant.0.codigoPais ~ verant.0.telefono2 }}</a></span>{% endif %}
+                        {# {% if verant.0.email%}<span class="block"><strong><i class="fa fa-envelope"></i> Email:</strong> <a href="mailto:{{ verant.0.email }}">{{ verant.0.email }}</a></span>{% endif %} #}
+                    </p>
+
+                    <hr />
+
+                    <h2 class="lead colorDos"><strong>Horario de Trabajo</strong></h2>
+                    <p>
+                        {% for hora in horario %}
+                            <span class="block"><strong> {{ hora.dias ~ ":"}} </strong> {{ hora.horaDesde|date('H:i') }} to {{ hora.horaHasta|date('H:i') }}</span>
+                        {% endfor %}
+                    </p>
+                  </div>
+                </div>
+                <!-- /INFO -->
+
+            </div>
+
+        </div>
+    </section>
+    <!-- / -->
+
+{% endblock %}

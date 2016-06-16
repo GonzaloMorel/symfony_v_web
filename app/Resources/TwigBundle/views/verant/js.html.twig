@@ -1,0 +1,27 @@
+{# app/Resources/view/verant/js.html.twig #}
+
+
+{% block javascripts %}
+    <!-- JAVASCRIPT FILES -->
+    <script type="text/javascript">var plugin_path = "{{ asset('public/assets/plugins/') }}";</script>
+    <script type="text/javascript" src="{{ asset('public/assets/plugins/jquery/jquery-2.1.4.min.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('public/assets/js/scripts.js') }}"></script>
+
+    <!-- STYLESWITCHER - REMOVE -->
+
+
+    <!-- REVOLUTION SLIDER -->
+    <script type="text/javascript" src="{{ asset('public/assets/plugins/slider.revolution/js/jquery.themepunch.tools.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/assets/plugins/slider.revolution/js/jquery.themepunch.revolution.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/assets/js/view/demo.revolution_slider.js') }}"></script>    
+
+
+    <!-- Validador RUT -->
+    <script type="text/javascript" src="{{ asset('rut/jquery.Rut.min.js') }}"></script> 
+    
+    <!-- Funciones Mitocondria -->
+    <script type="text/javascript" src="{{ asset('assets/js/funciones.js') }}"></script>
+
+{% endblock %}
+

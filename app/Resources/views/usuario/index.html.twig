@@ -1,0 +1,103 @@
+{% extends 'admin.html.twig' %}
+
+{% block middle %}
+    <header id="page-header">
+        <h1>Usuario</h1>
+    </header>
+    {% for flashMessage in app.session.flashbag.get('mensaje') %}
+        <div class="alert alert-mini alert-danger margin-bottom-30">
+            <span class="alert-success">
+                {{ flashMessage }}
+                </br>
+            </span>
+        </div>
+    {% endfor %}
+    <div id="content" class="padding-20">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>Usuarios <span class="badge badge-info">{{ pagination.getTotalItemCount }}</span></strong>
+            </div><!-- end panel-heading -->
+            <div class="panel-body">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>{{ knp_pagination_sortable(pagination, 'Id', 'u.id' ) }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Imagen', 'u.imagen_usu' ) }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Rut', 'u.rut' ) }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Nombre', 'u.nombre' ) }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Rol', 'u.roles' ) }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Tipo', 'u.tipo' ) }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Cargo', 'u.cargo' ) }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Teléfono', 'u.telefono' ) }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Público', 'u.publico' ) }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Activo', 'u.is_active' ) }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Creación', 'u.created_at' ) }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Actualización', 'u.updated_at' ) }}</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for usuario in pagination %}
+                            <tr>
+                                <td><a href="{{ path('usuario_show', { 'id': usuario.id }) }}">{{ usuario.id }}</a></td>
+                                <td>
+                                    {% if(usuario.imagenUsuTipo == "") %}
+                                        {{ 'sin foto' }}
+                                    {% else %}
+                                        <img src="{{ 'data:' ~ usuario.imagenUsuTipo ~ ';base64,' ~ usuario.imagenUsu }}" height="100"/>
+                                    {% endif %}
+                                </td>
+                                <td>{{ usuario.rut~"-"~usuario.dv }}</td>
+                                <td>{{ usuario.nombres ~ " " ~ usuario.apPat ~ " " ~ usuario.apMat}}</td>
+                                <td>
+                                    {% if(usuario.roles == 'ROLE_SUPERVISOR') %}
+                                        {{ 'Supervisor' }} 
+                                    {% elseif(usuario.roles == 'ROLE_ANALISTA' )  %}
+                                        {{ 'Analista' }}    
+                                    {% elseif(usuario.roles == 'ROLE_SUPERUSER') %}
+                                        {{ 'Super Usuario' }}      
+                                    {% elseif(usuario.roles == 'ROLE_VERANT') %}
+                                        {{ 'Usuario Verant' }}     
+                                    {% elseif(usuario.roles == 'ROLE_USER' ) %}
+                                        {{ 'Usuario' }}     
+                                    {% endif  %}
+                                </td>
+                                <td>
+                                    {% if(usuario.tipo == 'USU_NAT' )%}
+                                        {{ 'Persona Natural' }} 
+                                    {% elseif( usuario.tipo == 'USU_EMP') %}
+                                        {{ 'Empresa' }} 
+                                    {% elseif( usuario.tipo == 'USU_VERANT') %}
+                                        {{ 'Interno' }} 
+
+                                    {% endif %}
+                                </td>
+                                <td>{{ usuario.cargo }}</td>
+                                <td>{{ usuario.telefono }}</td>
+                                <td>{% if usuario.publico %}Yes{% else %}No{% endif %}</td>
+                                <td>{% if usuario.isActive %}Yes{% else %}No{% endif %}</td>
+                                <td>{% if usuario.createdAt %}{{ usuario.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                <td>{% if usuario.updatedAt %}{{ usuario.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <a class="btn btn-sm btn-info" href="{{ path('usuario_show', { 'id': usuario.id }) }}">Ver</a>
+                                        <a class="btn btn-sm btn-success" href="{{ path('usuario_edit', { 'id': usuario.id }) }}">Editar</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {# display navigation #}
+                <div class="navigation">
+                    {{ knp_pagination_render(pagination) }}
+                </div>
+            </div><!-- end panel-body-->
+            <div class="panel-footer">
+                <div class="btn-group" role="group">
+                    <a class="btn btn-md btn-primary" href="{{ path('usuario_new') }}">Crear Usuario</a>
+                </div>
+            </div><!-- end panel-footer -->
+        </div><!-- end panel-default -->
+    </div><!-- end content -->
+{% endblock %}

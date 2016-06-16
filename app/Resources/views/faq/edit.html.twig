@@ -1,0 +1,28 @@
+{% extends 'admin.html.twig' %}
+
+{% block middle %}
+    <header id="page-header">
+        <h1>Preguntas Frecuentes</h1>
+    </header>
+    <div id="content" class="padding-20">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>Edición de FAQ</strong>
+            </div>
+            <div class="panel-body">
+
+                {{ form_start(edit_form) }}
+                {{ form_widget(edit_form) }}
+                <input class="btn btn-md btn-success" type="submit" value="Editar" />
+                {{ form_end(edit_form) }}
+            </div>
+            <div class="panel-footer">
+                <div class="btn-group" role="group">
+                    {{ form_start(delete_form) }}
+                    <a class="btn btn-sm btn-warning" href="{{ path('faq_index') }}">Volver</a>
+                    <a class="btn btn-sm btn-primary" href="{{ path('faq_new') }}">Crear Pregunta</a>
+                    <input class="btn btn-sm btn-danger" type="submit" value="Eliminar">
+                    {{ form_end(delete_form) }}
+                </div>
+            </div>
+        {% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'admin.html.twig' %}
+
+{% block middle %}
+    <header id="page-header">
+        <h1>Preguntas Frecuentes</h1>
+    </header>
+    <div id="content" class="padding-20">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>Listado de Preguntas <span class="badge badge-info">{{ pagination.getTotalItemCount }}</span></strong>
+            </div>
+            <div class="panel-body">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>{{ knp_pagination_sortable(pagination, 'Id', 'f.id' ) }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Pregunta', 'f.pregunta' ) }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Activo', 'f.is_active' ) }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Creación', 'f.created_at' ) }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Actualización', 'f.updated_at' ) }}</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for faq in pagination %}
+                            <tr>
+                                <td><a href="{{ path('faq_show', { 'id': faq.id }) }}">{{ faq.id }}</a></td>
+                                <td>{{ faq.pregunta }}</td>
+                                <td>{% if faq.isActive %}Yes{% else %}No{% endif %}</td>
+                                <td>{% if faq.createdAt %}{{ faq.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                <td>{% if faq.updatedAt %}{{ faq.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <a class="btn btn-sm btn-info" href="{{ path('faq_show', { 'id': faq.id }) }}">Ver</a>
+                                        <a class="btn btn-sm btn-success" href="{{ path('faq_edit', { 'id': faq.id }) }}">Editar</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {# display navigation #}
+                <div class="navigation">
+                    {{ knp_pagination_render(pagination) }}
+                </div>
+            </div>
+            <div class=" panel-footer">
+
+                <a class="btn btn-md btn-primary" href="{{ path('faq_new') }}">Crear Pregunta</a>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'admin.html.twig' %}
+
+{% block middle %}
+    <header id="page-header">
+        <h1>Preguntas Frecuentes</h1>
+    </header>
+    <div id="content" class="padding-20">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>FAQ {{ faq.pregunta}}</strong>
+            </div>
+            <div class="panel-body">
+
+
+                <table class="table table-bordered table-striped">
+                    <tbody>
+                        <tr>
+                            <th>Id</th>
+                            <td>{{ faq.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Pregunta</th>
+                            <td>{{ faq.pregunta }}</td>
+                        </tr>
+                        <tr>
+                            <th>Respuesta</th>
+                            <td>{{ faq.respuesta }}</td>
+                        </tr>
+                        <tr>
+                            <th>Activo</th>
+                            <td>{% if faq.isActive %}Yes{% else %}No{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Creación</th>
+                            <td>{% if faq.createdAt %}{{ faq.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Actualización</th>
+                            <td>{% if faq.updatedAt %}{{ faq.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="panel-footer">
+                <div class="btn-group" role="group">
+                    {{ form_start(delete_form) }}
+                    <a class="btn btn-sm btn-warning" href="{{ path('faq_index') }}">Volver</a>
+                    <a class="btn btn-sm btn-success" href="{{ path('faq_edit', { 'id': faq.id }) }}">Editar</a>
+                    <a class="btn btn-sm btn-primary" href="{{ path('faq_new') }}">Crear Pregunta</a>
+                    <input class="btn btn-sm btn-danger" type="submit" value="Eliminar">
+                    {{ form_end(delete_form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

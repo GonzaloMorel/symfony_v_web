@@ -1,0 +1,153 @@
+{% extends 'admin.html.twig' %}
+
+{% block middle %}
+    <header id="page-header">
+        <h1>Usuario</h1>
+    </header>
+    <div id="content" class="padding-20">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>Usuario: {{ usuario.nombres ~ " "~usuario.apPat ~ " "~ usuario.apMat}}</strong>
+            </div><!-- end panel-heading -->
+            <div class="panel-body">
+                <table class="table table-bordered table-striped">
+                    <tbody>
+                        <tr>
+                            <th>Imagen</th>
+                            <td>
+                                {% if(usuario.imagenUsuTipo == "") %}
+                                    {{ 'sin foto' }}
+                                {% else %}
+                                    <img src="{{ 'data:' ~ usuario.imagenUsuTipo ~ ';base64,' ~ usuario.imagenUsu }}" height="100"/>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Id</th>
+                            <td>{{ usuario.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Rut</th>
+                            <td>{{ usuario.rut~'-'~usuario.dv }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nombre </th>
+                            <td>{{ usuario.nombres ~ ' ' ~ usuario.apPat ~ ' '~ usuario.apMat}}</td>
+                        </tr>
+                        <tr>
+                            <th>Dirección</th>
+                            <td>{{ usuario.direccion }}</td>
+                        </tr>
+                        <tr>
+                            <th>Región</th>
+                            <td>{{ usuario.region.nombrePrv }}</td>
+                        </tr>
+                        <tr>
+                            <th>Ciudad</th>
+                            <td>{{ usuario.ciudad.nombrePrv }}</td>
+                        </tr>
+                        <tr>
+                            <th>Comuna</th>
+                            <td>{{ usuario.comuna.nombrePrv }}</td>
+                        </tr>
+                        <tr>
+                            <th>Número</th>
+                            <td>{{ usuario.numero }}</td>
+                        </tr>
+                        <tr>
+                            <th>Departamento</th>
+                            <td>{{ usuario.departamento }}</td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td>
+                                <a href="mailto:{{ usuario.email }}">
+                                    {{ usuario.email }}
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Rol</th>
+                            <td>
+                                {% if(usuario.roles == 'ROLE_SUPERVISOR') %}
+                                    {{ 'Supervisor' }} 
+                                {% elseif(usuario.roles == 'ROLE_ANALISTA' )  %}
+                                    {{ 'Analista' }}    
+                                {% elseif(usuario.roles == 'ROLE_SUPERUSER') %}
+                                    {{ 'Super Usuario' }}      
+                                {% elseif(usuario.roles == 'ROLE_VERANT') %}
+                                    {{ 'Usuario Verant' }}     
+                                {% elseif(usuario.roles == 'ROLE_USER' ) %}
+                                    {{ 'Usuario' }}     
+                                {% endif  %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Tipo</th>
+                            <td>
+                                {% if(usuario.tipo == 'USU_NAT' )%}
+                                    {{ 'Persona Natural' }} 
+                                {% elseif( usuario.tipo == 'USU_EMP') %}
+                                    {{ 'Empresa' }} 
+                                {% elseif( usuario.tipo == 'USU_VERANT') %}
+                                    {{ 'Interno' }} 
+
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Cargo</th>
+                            <td>{{ usuario.cargo }}</td>
+                        </tr>
+                        <tr>
+                            <th>Descripción</th>
+                            <td>{{ usuario.texto }}</td>
+                        </tr>
+                        <tr>
+                            <th>Teléfono</th>
+                            <td>{{ usuario.telefono }}</td>
+                        </tr>
+                        <tr>
+                            <th>Facebook</th>
+                            <td>{{ usuario.facebook }}</td>
+                        </tr>
+                        <tr>
+                            <th>Twitter</th>
+                            <td>{{ usuario.twitter }}</td>
+                        </tr>
+                        <tr>
+                            <th>Linkedin</th>
+                            <td>{{ usuario.linkedin }}</td>
+                        </tr>
+                        <tr>
+                            <th>Público</th>
+                            <td>{% if usuario.publico %}Yes{% else %}No{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Activo</th>
+                            <td>{% if usuario.isActive %}Yes{% else %}No{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Creación</th>
+                            <td>{% if usuario.createdAt %}{{ usuario.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Actualización</th>
+                            <td>{% if usuario.updatedAt %}{{ usuario.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div><!--end panel-body -->
+            <div class="panel-footer">
+                <div class="btn-group"role="group">
+                    {{ form_start(delete_form) }}
+                    <a class="btn btn-sm btn-warning" href="{{ path('usuario_index') }}">Volver</a>
+                    <a class="btn btn-sm btn-info" href="{{ path('usuario_edit', { 'id': usuario.id }) }}">Editar</a>
+                    <input class="btn btn-sm btn-danger" type="submit" value="Eliminar">
+                    {{ form_end(delete_form) }}
+                </div>
+
+            </div><!-- end panel-footer  -->
+        </div><!-- end panel-default -->
+    </div><!-- end content -->
+{% endblock %}

@@ -1,0 +1,317 @@
+{# app/Resources/view/verant/servicios.html.twig #}
+{% extends 'verant.html.twig' %}
+
+{% block wrapper %}
+
+    <!-- header -->
+    {{ include('verant/header2.html.twig') }}
+    <!-- end header -->
+
+    <!--
+    PAGE HEADER
+
+    CLASSES:
+            .page-header-xs	= 20px margins
+            .page-header-md	= 50px margins
+            .page-header-lg	= 80px margins
+            .page-header-xlg= 130px margins
+            .dark			= dark page header
+
+            .shadow-before-1 	= shadow 1 header top
+            .shadow-after-1 	= shadow 1 header bottom
+            .shadow-before-2 	= shadow 2 header top
+            .shadow-after-2 	= shadow 2 header bottom
+            .shadow-before-3 	= shadow 3 header top
+            .shadow-after-3 	= shadow 3 header bottom
+            .light			= light page header
+    -->
+    <section class="page-header">
+        <div class="container">
+
+            <h1>Servicios</h1>
+
+
+        </div>
+    </section>
+
+    <!-- /PAGE HEADER -->
+    <section class="padding-top-50">
+      <div class="container">
+
+         <div class="row">
+            <div class="col-md-6">
+               <h2 class="txtUp colorUno">En Verant ofrecemos servicios tanto para Empresas como Personas.</h2>
+               <p class="lead font-raleway">El servicio consiste en la validación de antecedentes académicos, laborales, legales y políticos.</p>
+            </div>
+            <div class="col-md-6">
+               <p>Los datos que hasta el momento podemos validar son:</p>
+               <ul>
+                  <li>Nombre</li>
+                  <li>RUT / DNI</li>
+                  <li>Fecha de nacimiento</li>
+                  <li>Dirección (incluye país en caso de que el candidato sea extranjero)</li>
+                  <li>Teléfono</li>
+                  <li>E-mail</li>
+                  <li>Datos laborales (cerciorándonos de las fechas de desde y hasta en determinada institución)</li>
+               </ul>
+               <p>A futuro, se incorporarán nuevos antecedentes para validación y de esta forma podremos ofrecer un servicio integral a nuestros clientes.</p>
+
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <section class="margin-bottom-30 huincha-servicios">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-10 col-lg-offset-1 text-center">
+               <p class="lead font-raleway">A continuación detallamos el proceso de validación que puede ser solicitado tanto por <strong>personas naturales</strong> como <strong>empresas</strong>:</p>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <div class="clearfix"></div>
+
+   <div class="container">
+      <ul class="nav nav-tabs nav-justified" role="tablist">
+          <li role="presentation" class="active"><a href="#personas" aria-controls="personas" role="tab" data-toggle="tab">Personas</a></li>
+          <li role="presentation" ><a href="#empresas" aria-controls="empresas" role="tab" data-toggle="tab">Empresas</a></li>
+      </ul>
+   </div>
+
+    <div class="tab-content" id="serviciosContainer">
+
+        <!-- PERSONAS -->
+        <div class="tab-pane active" id="personas">
+            <div class="container">
+               <div class="col-md-12 table-bordered" style="border-top:0;">
+                  <!-- section servicios-->
+
+                      <div class="row">
+                        <div class="col-lg-10 col-lg-offset-1 margin-top-30">
+                             {%for persona in personas_pri %}
+                                 <p>{{ persona.texto|raw }}</p>
+                             {% endfor %}
+                             <div class="divider divider-center divider-color"><!-- divider -->
+                                 <i class="fa fa-chevron-down"></i>
+                             </div>
+                        </div>
+                          <!-- FEATURED BOXES 3 -->
+                          <div class="row">
+                              {% for servicio in servicios_p %}
+                                  <div class="col-md-4 col-xs-6">
+                                      <div class="text-center">
+                                          <i class="ico-color ico-lg ico-rounded ico-hover {{ servicio.icono}}"></i>
+                                          <h4>{{ servicio.titulo|raw }}</h4>
+                                          <p class="font-lato size-20">{{ servicio.subtitulo }}</p>
+                                      </div>
+                                  </div>
+                              {% endfor %}
+                          </div>
+                          <!-- /FEATURED BOXES 3 -->
+
+                      </div>
+
+                  <!-- end section servicios -->
+
+                  <!--section Smarty-->
+                  <!--{% for segundo in personas_sec%}
+                      <section>
+                          <div class="container">
+
+                              <div class="row">
+                                  <div class="col-md-5 col-sm-5">
+                                      <a class="image-hover lightbox thumbnail" href="{{ segundo.urlVideo}}" data-plugin-options='{"type":"iframe"}'>
+                                          <span class="image-hover-icon image-hover-light">
+                                              <i class="fa fa-vimeo-square">
+                                          </span>
+                                      </a>
+                                      <img class="img-responsive" src="{{ 'data:' ~ segundo.imagenTipo ~ ';base64,' ~ segundo.imagen }}" alt="...">
+                                  </div>
+
+                                  <div class="col-md-7 col-sm-7">
+
+                                      <header class="margin-bottom-60">
+                                          <h2 class="txtUp colorUno">{{ segundo.titulo|raw }}</h2>
+                                          <p class="lead font-lato">{{ segundo.subtitulo|raw }}</p>
+                                      </header>
+                                      {{ segundo.texto|raw }}
+                                      <a class="btn btn-success btn-lg margin-top-30 lightbox" href="{{ segundo.urlVideo}}" data-plugin-options='{"type":"iframe"}'>Ver Video</a>
+
+                                  </div>
+
+                              </div>
+
+                          </div>
+                      </section>
+                  {% endfor %}-->
+                  <!-- end section Smarty-->
+
+                  <!-- section research -->
+                  <section>
+                      <div class="row">
+
+                          <div class="col-lg-10 col-lg-offset-1 ">
+                              <div class="divider divider-center divider-color"><!-- divider -->
+                                 <i class="fa fa-chevron-down"></i>
+                              </div>
+                          </div>
+                          <div class="clearfix"></div>
+                          <ul class="process-steps nav nav-tabs nav-justified margin-top-20">
+                              {% for proceso_p in procesos_p %}
+                                  <li {% if (loop.index == 1) %} class="active" {% endif %}>
+                                      <a href="#step{{ loop.index }}" data-toggle="tab">{{ loop.index }}</a>
+                                      <h5>{{ proceso_p.titulo }}</h5>
+                                  </li>
+                              {% endfor %}
+                          </ul>
+
+                          <div class="col-lg-10 col-lg-offset-1">
+                             <div class="tab-content margin-top-30 col-lg-10 col-lg-offset-1 text-center">
+
+                                    {% for proceso_p in procesos_p %}
+                                        <div class="tab-pane {% if (loop.index == 1) %} active{% endif %}" id="step{{ loop.index}}">
+                                            <strong>{{ proceso_p.titulo }}</strong>{{ " " ~ proceso_p.texto|raw }}
+                                        </div>
+                                    {% endfor %}
+
+                             </div>
+                           </div>
+                      </div>
+                  </section>
+                  <!-- end section research -->
+               </div>
+            </div>
+        </div><!-- end tab-pane -->
+        <!-- FINPERSONAS -->
+
+
+        <!-- EMPRESAS-->
+        <div class="tab-pane" id="empresas">
+           <div class="container">
+              <div class="col-md-12 table-bordered" style="border-top:0;">
+                  <!-- section servicios-->
+
+                      <div class="row">
+                        <div class="col-lg-10 col-lg-offset-1 margin-top-30">
+                          {% for empresa in empresas_pri %}
+                          <p >{{ empresas_pri.0.texto|raw }}</p>
+                          {% endfor %}
+                          <div class="divider divider-center divider-color"><!-- divider -->
+                              <i class="fa fa-chevron-down"></i>
+                          </div>
+                        </div>
+                          <!-- FEATURED BOXES 3 -->
+                          <div class="row">
+                              {% for servicio in servicios_e %}
+                                  <div class="col-md-4 col-xs-6">
+                                      <div class="text-center">
+                                          <i class="ico-color ico-lg ico-rounded ico-hover {{ servicio.icono}}"></i>
+                                          <h4>{{ servicio.titulo }}</h4>
+                                          <p class="font-lato size-20">{{ servicio.subtitulo }}</p>
+                                      </div>
+                                  </div>
+                              {% endfor %}
+                          </div>
+                          <!-- /FEATURED BOXES 3 -->
+
+                      </div>
+
+                  <!-- end section servicios -->
+
+                  <!--section Smarty-->
+                  <!--{% for empresa in empresas_sec %}
+                  <section>
+                      <div class="container">
+
+                          <div class="row">
+                              <div class="col-md-5 col-sm-5">
+                                  <a class="image-hover lightbox thumbnail" href="{{ empresa.urlVideo}}" data-plugin-options='{"type":"iframe"}'>
+                                      <span class="image-hover-icon image-hover-light">
+                                          <i class="fa fa-vimeo-square">
+                                      </span>
+                                      <img class="img-responsive" src="{{ 'data:' ~ empresa.imagenTipo ~ ';base64,' ~ empresa.imagen }}" alt="...">
+                                  </a>
+                              </div>
+
+                              <div class="col-md-7 col-sm-7">
+
+                                  <header class="margin-bottom-60">
+                                      <h2>{{ empresa.titulo}}</h2>
+                                      <p class="lead font-lato">{{ empresa.subtitulo }}</p>
+                                  </header>
+                                  {{ empresas_sec.0.texto|raw }}
+                                  <a class="btn btn-default btn-lg size-15 margin-top-30 lightbox" href="{{ empresa.urlVideo}}" data-plugin-options='{"type":"iframe"}'>Ver Video</a>
+
+                              </div>
+
+                          </div>
+
+                      </div>
+                  </section>
+                  {% endfor %}-->
+                  <!-- end section Smarty-->
+
+                  <!-- section research -->
+                  <section>
+                      <div class="row">
+
+                         <div class="col-lg-10 col-lg-offset-1 ">
+                             <div class="divider divider-center divider-color"><!-- divider -->
+                                <i class="fa fa-chevron-down"></i>
+                             </div>
+                         </div>
+
+                          <ul class="process-steps nav nav-tabs nav-justified margin-top-20">
+                              {% for proceso in procesos_e %}
+                                  <li {% if (loop.index == 1) %} class="active" {% endif %}>
+                                      <a href="#step{{ loop.index }}" data-toggle="tab">{{ loop.index }}</a>
+                                      <h5>{{ proceso.titulo }}</h5>
+                                  </li>
+                              {% endfor %}
+
+                          </ul>
+
+                          <div class="col-lg-10 col-lg-offset-1">
+                             <div class="tab-content margin-top-30 col-lg-10 col-lg-offset-1 text-center">
+                                 {% for proceso in procesos_e %}
+                                     <div class="tab-pane {% if (loop.index == 1) %} active{% endif %}" id="step{{ loop.index}}">
+                                         <strong>{{ proceso.titulo }}</strong>{{ " " ~ proceso.texto|raw }}
+                                     </div>
+                                 {% endfor %}
+                             </div>
+                           </div>
+
+                      </div>
+                  </section>
+                  <!-- end section research -->
+               </div>
+            </div>
+        </div><!-- end tab-pane -->
+        <!-- FIN EMPRESAS-->
+
+
+    </div><!-- end tab-content -->
+
+    <section class=" huincha-servicios">
+       <div class="container">
+          <div class="row">
+             <div class="col-md-4 ">
+                <p class="lead font-raleway">En Verant nos preocupamos para que el servicio de solicitud de validaciones sea <strong>rápido y fácil de usar</strong>.</p>
+
+
+             </div>
+             <div class="col-md-8 ">
+                <p>
+                   Para ello, ofrecemos a nuestros clientes (tanto personas naturales como empresas) el servicio de pago vía WebPay que en simples pasos se puede realizar la transacción para acceder al informe online.</p>
+                   <p>
+                   Además, en Verant también estamos preocupados por la seguridad de los datos y transacciones. Por ello contamos con protocolo SSL. Que es un certificado de seguridad que garantiza operaciones fiables en la red por lo que la privacidad de datos está completamente protegida. SSL ofrece un sistema confiable al trabajar la información cifrada que asegura, además, la identidad y credenciales de la página.
+                </p>
+             </div>
+          </div>
+       </div>
+    </section>
+
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'admin.html.twig' %}
+
+{% block middle %}
+    <header id="page-header">
+        <h1>Servicio New</h1>
+    </header>
+    <div id="content" class="padding-20">
+        <div class="panel panel-default">
+            <div class="panel-heading panel-heading-transparent">
+                <Strong>Creación de clientes</strong>
+            </div>
+            <div class="panel-body">
+
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <input class="btn btn-md btn-primary" type="submit" value="Crear" />
+                {{ form_end(form) }}
+
+            </div>
+            <div class="panel-footer">
+                <a class="btn btn-sm btn-warning" href="{{ path('cliente_index') }}">Volver</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

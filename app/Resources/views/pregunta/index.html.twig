@@ -1,0 +1,64 @@
+{% extends 'admin.html.twig' %}
+
+{% block middle %}
+    <header id="page-header">
+        <h1>Preguntas</h1>
+    </header>
+    {% for flashMessege in app.session.flashbag.get('mensaje') %}
+        <div class="alert alert-success" role="alert">
+            <div class="container">{{ flashMessage }}</div>
+        </div>
+    {% endfor %}
+    <div id="content" class="padding-20">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>Preguntas externas <span class="badge badge-info">{{ pagination.getTotalItemCount }}</span></strong>
+            </div><!-- end panel-heading -->
+            <div class="panel-body">
+                <table class=" table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>{{ knp_pagination_sortable(pagination, 'Id', 'p.id' ) }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Nombre', 'p.nombre' ) }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Email', 'p.email' ) }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Pregunta', 'p.pregunta' ) }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Creación', 'p.created_at' ) }}</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for preguntum in pagination %}
+                            <tr>
+                                <td><a href="{{ path('pregunta_show', { 'id': preguntum.id }) }}">{{ preguntum.id }}</a></td>
+                                <td>{{ preguntum.nombre }}</td>
+                                <td>
+                                    <a href="mailto:{{ preguntum.email }}">
+                                    {{ preguntum.email }}
+                                    </a>
+                                </td>
+                                <td>{{ preguntum.pregunta }}</td>
+                                <td>{% if preguntum.createdAt %}{{ preguntum.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <a class="btn btn-sm btn-success" href="{{ path('pregunta_show', { 'id': preguntum.id }) }}">show</a>
+                                       <!-- <a href="{# path('pregunta_edit', { 'id': preguntum.id }) #}">edit</a>-->
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {# display navigation #}
+                <div class="navigation">
+                    {{ knp_pagination_render(pagination) }}
+                </div>
+            </div><!-- end panel-body -->
+            <div class="panel-footer">
+                <div class=" btn-group" role="group">
+                        <!--<a href="{{ path('pregunta_new') }}">Create a new entry</a>-->
+                </div>
+            </div><!-- end panel-footer -->
+        </div><!-- end panel-default -->
+    </div><!-- end content -->
+{% endblock %}

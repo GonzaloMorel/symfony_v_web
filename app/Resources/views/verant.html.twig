@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <head>
+        <title>{% block title %}Verant{% endblock %}</title>
+        {{ include('verant/meta.html.twig') }}
+        <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+        {{ include('verant/css.html.twig') }}
+         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+
+    <body class="smoothscroll enable-animation">
+
+        <div id="wrapper">
+            {% block wrapper %}{% endblock %}
+        </div>
+
+        <!-- contact -->    
+        {{ include('verant/contactUs.html.twig') }}
+        <!-- end contact -->
+        
+        <!-- footer -->
+        {{ include('verant/footer.html.twig') }}
+        <!-- end footer -->
+        
+        <!-- modal -->    
+        {{ include('verant/modal.html.twig') }}
+        <!-- modal -->
+        
+        <!-- Javascritp -->
+        {{ include('verant/js.html.twig') }} 
+        <!-- end javascript -->
+    </body>
+</html>

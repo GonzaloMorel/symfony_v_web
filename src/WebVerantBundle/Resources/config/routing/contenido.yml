@@ -1,0 +1,27 @@
+contenido_index:
+    path:     /
+    defaults: { _controller: "WebVerantBundle:Contenido:index" }
+    methods:  GET
+
+contenido_show:
+    path:     /show/{id}
+    defaults: { _controller: "WebVerantBundle:Contenido:show" }
+    methods:  GET
+
+contenido_new:
+    path:     /new
+    defaults: { _controller: "WebVerantBundle:Contenido:new" }
+    methods:  [GET, POST]
+
+contenido_edit:
+    path:     /edit/{id}
+    defaults: { _controller: "WebVerantBundle:Contenido:edit" }
+    methods:  [GET, POST]
+
+contenido_delete:
+    path:     /delete/{id}
+    defaults: { _controller: "WebVerantBundle:Contenido:delete" }
+    methods:  DELETE
+
+  
+  

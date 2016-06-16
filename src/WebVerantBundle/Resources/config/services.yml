@@ -1,0 +1,4 @@
+services:
+#    web_verant.example:
+#        class: WebVerantBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

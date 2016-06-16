@@ -1,0 +1,24 @@
+proceso_index:
+    path:     /
+    defaults: { _controller: "WebVerantBundle:Proceso:index" }
+    methods:  GET
+
+proceso_show:
+    path:     /show/{id}
+    defaults: { _controller: "WebVerantBundle:Proceso:show" }
+    methods:  GET
+    
+proceso_new:
+    path:     /new
+    defaults: { _controller: "WebVerantBundle:Proceso:new" }
+    methods:  [GET, POST]
+
+proceso_edit:
+    path:     /edit/{id}
+    defaults: { _controller: "WebVerantBundle:Proceso:edit" }
+    methods:  [GET, POST]
+
+proceso_delete:
+    path:     /delete/{id}
+    defaults: { _controller: "WebVerantBundle:Proceso:delete" }
+    methods:  DELETE

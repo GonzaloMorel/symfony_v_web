@@ -1,0 +1,30 @@
+provincias_index:
+    path:     /
+    defaults: { _controller: "VerantBundle:Provincias:index" }
+    methods:  GET
+
+provincias_show:
+    path:     /{id}/show
+    defaults: { _controller: "VerantBundle:Provincias:show" }
+    methods:  GET
+
+provincias_new:
+    path:     /new
+    defaults: { _controller: "VerantBundle:Provincias:new" }
+    methods:  [GET, POST]
+
+provincias_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "VerantBundle:Provincias:edit" }
+    methods:  [GET, POST]
+
+provincias_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "VerantBundle:Provincias:delete" }
+    methods:  DELETE
+
+
+provincias_comuna:
+    path:     /comuna/{id}
+    defaults: { _controller: "VerantBundle:Provincias:comuna" }
+    methods:  [GET, POST]

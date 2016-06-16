@@ -1,0 +1,29 @@
+empresa_index:
+    path:     /
+    defaults: { _controller: "VerantBundle:Empresa:index" }
+    methods:  GET
+
+empresa_show:
+    path:     /{id}/show
+    defaults: { _controller: "VerantBundle:Empresa:show" }
+    methods:  GET
+
+empresa_new:
+    path:     /new
+    defaults: { _controller: "VerantBundle:Empresa:new" }
+    methods:  [GET, POST]
+
+empresa_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "VerantBundle:Empresa:edit" }
+    methods:  [GET, POST]
+
+empresa_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "VerantBundle:Empresa:delete" }
+    methods:  DELETE
+    
+empresa_registro:
+    path:     /registro
+    defaults: { _controller: "VerantBundle:Empresa:registro" }
+    methods:  [GET, POST]

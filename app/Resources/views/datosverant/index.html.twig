@@ -1,0 +1,68 @@
+{% extends 'admin.html.twig' %}
+
+{% block middle %}
+    <header id="page-header">
+        <h1>Datos Verant</h1>
+    </header>
+    <div id="content" class="padding-20">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>Datos</strong>
+            </div><!-- end panel-heading -->
+            <div class="panel-body">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nombre</th>
+                            <th>Rut</th>
+                            <th>Dv</th>
+                            <th>Direccion</th>
+                            <th>Numero</th>
+                            <th>Departamento</th>
+                            <th>Codigopais</th>
+                            <th>Telefono1</th>
+                            <th>Telefono2</th>
+                            <th>Email</th>
+                            <th>Isactive</th>
+                            <th>Createdat</th>
+                            <th>Updatedat</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for datosVerant in datosVerants %}
+                            <tr>
+                                <td><a href="{{ path('datosverant_show', { 'id': datosVerant.id }) }}">{{ datosVerant.id }}</a></td>
+                                <td>{{ datosVerant.nombre }}</td>
+                                <td>{{ datosVerant.rut }}</td>
+                                <td>{{ datosVerant.dv }}</td>
+                                <td>{{ datosVerant.direccion }}</td>
+                                <td>{{ datosVerant.numero }}</td>
+                                <td>{{ datosVerant.departamento }}</td>
+                                <td>{{ datosVerant.codigoPais }}</td>
+                                <td>{{ datosVerant.telefono1 }}</td>
+                                <td>{{ datosVerant.telefono2 }}</td>
+                                <td>{{ datosVerant.email }}</td>
+                                <td>{% if datosVerant.isActive %}Yes{% else %}No{% endif %}</td>
+                                <td>{% if datosVerant.createdAt %}{{ datosVerant.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                <td>{% if datosVerant.updatedAt %}{{ datosVerant.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <a class="btn btn-sm btn-success" href="{{ path('datosverant_show', { 'id': datosVerant.id }) }}">show</a>
+                                        <a class="btn btn-sm btn-info" href="{{ path('datosverant_edit', { 'id': datosVerant.id }) }}">edit</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="panel-footer">
+                <div class="btn-group" role="group">
+                    <a class="btn btn-sm btn-info" href="{{ path('datosverant_new') }}">Create a new entry</a>
+                </div>
+            </div><!-- end panel- footer -->
+        </div><!-- end panel-default -->
+    </div><!-- end content -->
+{% endblock %}

@@ -1,0 +1,89 @@
+{# app/Resources/view/verant/nav.html.twig #}
+
+{% block nav %}
+
+
+    <li class="active"><!-- HOME -->
+        <a href="{{ path('web_verant_homepage') }}">
+            Home
+        </a>
+    </li>
+    <li><!-- Servicios -->
+        <a href="{{ path('web_verant_service') }}">
+            Servicios
+        </a>
+    </li>
+    <li><!-- PRICING -->
+        <a href="{{ path('web_verant_about') }}">
+            Quienes Somos
+        </a>
+    </li>
+    <li><!-- FAQ -->
+        <a href="{{ path('web_verant_faq') }}">
+            FAQ
+        </a>
+    </li>
+    <li><!-- contacto -->
+        <a href="{{ path('web_verant_contact') }}" >
+            Contacto
+        </a>
+    </li>
+        <li class="dropdown">
+        <a href="" class="dropdown-toggle" data-toggle="dropdown"data-close-others="true" role="button" aria-haspopup="true"> 
+            <span class="user-name">
+                <span class="hidden-xs">
+                    Ingresar
+                </span>
+            </span>
+        </a>
+        <ul class="dropdown-menu hold-on-click">
+            <li>
+                <a class="btn btn-primary" href="{{ path('web_verant_login') }}">
+                    <strong>Registro</strong>
+                </a>
+            </li>
+            <div class="box-static">
+                    <header>
+                        <h4 class="text-primary">Ingresa a tu cuenta</h4>
+                    </header>
+
+                    <form id="loginNav"  method="post" action="{{ path('web_verant_login_access')}}"  autocomplete="off">
+                        <input type="rut"  placeholder="Rut" required="" name="login[rut]" id="rut"/>
+                        <input type="password"  placeholder="Contraseña" required=""  name="login[password]" id="password"/>
+                        <!--<h4>¿OLVIDASTE TU CONTRASEÑA?</h5>-->
+                            <input class="btn btn-info" type="submit" value="Ingresar">
+                    </form>
+            </div><!-- end container -->
+        </ul>
+    </li>
+    {% if app.session.get('login') == true %}
+        
+    <li class="dropdown pull-left">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+            <span class="fa fa-user"></span>
+            <span class="user-name">
+                <span class="hidden-xs">
+                    {{ app.session.get('nombres') ~ ' ' ~ app.session.get('apPat') }} <i class="fa fa-angle-down"></i>
+                </span>
+            </span>
+        </a>
+        <ul class="dropdown-menu hold-on-click">
+            <!--
+            <li>
+                <a href="#"><i class="fa fa-envelope"></i> Inbox
+                    <span class="pull-right label label-default">0</span>
+                </a>
+            </li>
+            <li>
+                <a href="page-user-profile.html"><i class="fa fa-cogs"></i> Settings</a>
+            </li>
+
+            <li class="divider"></li>
+            -->
+            <li>
+                <a href="{{ path('web_verant_logout') }}"><i class="fa fa-power-off"></i> Log Out</a>
+            </li>
+        </ul>
+    </li>
+    {% endif %}
+{% endblock %}

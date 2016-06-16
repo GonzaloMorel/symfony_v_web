@@ -1,0 +1,24 @@
+textocita_index:
+    path:     /
+    defaults: { _controller: "WebVerantBundle:TextoCita:index" }
+    methods:  GET
+
+textocita_show:
+    path:     /show/{id}/show
+    defaults: { _controller: "WebVerantBundle:TextoCita:show" }
+    methods:  GET
+
+textocita_new:
+    path:     /new
+    defaults: { _controller: "WebVerantBundle:TextoCita:new" }
+    methods:  [GET, POST]
+
+textocita_edit:
+    path:     /edit/{id}
+    defaults: { _controller: "WebVerantBundle:TextoCita:edit" }
+    methods:  [GET, POST]
+
+textocita_delete:
+    path:     /delete/{id}
+    defaults: { _controller: "WebVerantBundle:TextoCita:delete" }
+    methods:  DELETE

@@ -1,0 +1,55 @@
+{% extends 'admin.html.twig' %}
+
+{% block middle %}
+    <header id="page-header">
+        <h1>Clientes</h1>
+    </header>
+    <div id="content" class="padding-20">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>Cliente {{ contenido.titulo }}</strong>
+            </div>
+            <div class="panel-body">
+                <table class="table table-bordered table-striped">
+                    <tbody>
+                        <tr>
+                            <th>Id</th>
+                            <td>{{ contenido.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nombre Empresa</th>
+                            <td>{{ contenido.titulo }}</td>
+                        </tr>
+                        <tr>
+                            <th>Imagen</th>
+                            <td><img src="{{ 'data:' ~ contenido.imagenTipo ~ ';base64,' ~ contenido.imagen }}" height="50"/></td>
+                        </tr>
+                        <tr>
+                            <th>Activo</th>
+                            <td>{% if contenido.isActive %}Yes{% else %}No{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Creación</th>
+                            <td>{% if contenido.createdAt %}{{ contenido.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Actualización</th>
+                            <td>{% if contenido.updatedAt %}{{ contenido.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div><!-- end panel-body -->
+            <div class="panel-footer">
+                <div class="btn-group" role="group">
+                    {{ form_start(delete_form) }}
+                    <a class="btn btn-sm btn-warning" href="{{ path('cliente_index') }}">Volver</a>
+                    <a class="btn btn-sm btn-success" href="{{ path('cliente_edit', { 'id': contenido.id }) }}">Editar</a>
+                    <a class="btn btn-sm btn-primary" href="{{ path('cliente_new') }}">Crear Cliente</a>
+                    <input class="btn btn-sm btn-danger" type="submit" value="Eliminar">
+                    {{ form_end(delete_form) }}
+
+                </div>
+            </div><!-- end panel- footer -->
+        </div><!-- end panel -->
+    </div><!-- end content -->
+{% endblock %}
